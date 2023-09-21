@@ -101,12 +101,12 @@ AppAuthAuthorization* authorization;
     
 #if TARGET_OS_OSX
     authorization = [[AppAuthMacOSAuthorization alloc] init];
-    
-    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-    [appleEventManager setEventHandler:instance
-                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                         forEventClass:kInternetEventClass
-                            andEventID:kAEGetURL];
+    // workaround to fix conflict with app_links
+    // NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    // [appleEventManager setEventHandler:instance
+    //                        andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+    //                      forEventClass:kInternetEventClass
+    //                         andEventID:kAEGetURL];
 #else
     authorization = [[AppAuthIOSAuthorization alloc] init];
     
